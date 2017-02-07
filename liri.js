@@ -38,10 +38,20 @@ switch(liriCommand) {
 
 //Function for pulling in last 20 tweets
 
-function myTweets(){};
+function myTweets(){
+	twitterUser.get('search/tweets', {q: 'burgeoningbaker', count: "20"}, function(error, tweet, response) {
+		if(error){
+			console.log(error);
+		}else{
+			console.log(tweet);
+		}
+	});
+};
 
 //Function for pulling in artist, song name, link to song and album with song via Spotify
-function myPlayList(){};
+function myPlayList(){
+	
+};
 
 //Function for using request to get OMDB movie information from movie object
 // Move Title, Year of release, Rating, Country, Language, Plot, Actors, Rotten Tomato Rating, URL
