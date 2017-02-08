@@ -51,11 +51,15 @@ function myTweets(){
 
 //Function for pulling in artist, song name, link to song and album with song via Spotify
 function myPlayList(){
+	if (!searchTitle){
+		searchTitle = 'The Sign';
+	}
+
 	spotify.search({type: 'track', query: searchTitle}, function(err, data){
-		if (err) {
+		if (err){
 			console.log('Error occurred: ' + err);
 			return;
-		}else if (data){
+		}
 		//Handle Data
 		var albumTrack = data.tracks.items;
 
@@ -67,9 +71,7 @@ function myPlayList(){
 		// } else if (!data && !err){
 		// myPlaylist('The Sign');
 		}
-		
-		}
-	});
+	};
 	
 };
 
