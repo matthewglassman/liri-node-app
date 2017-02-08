@@ -6,6 +6,7 @@ var spotify = require("spotify");
 var fs = require("fs");
 
 var liriCommand = process.argv[2];
+var searchTitle = process.argv[3];
 
 var twitterKeys = keys.twitterKeys;
 
@@ -24,7 +25,7 @@ switch(liriCommand) {
 	break;
 
 	case "spotify-this-song":
-	myPlayList(liriCommandParam);
+	myPlayList();
 	break;
 
 	case "movie-this":
@@ -49,20 +50,24 @@ function myTweets(){
 };
 
 //Function for pulling in artist, song name, link to song and album with song via Spotify
-function myPlayList(songchoice){
-	spotify.search({type: 'track', query: songchoice}, function(err, data){
+function myPlayList(){
+	spotify.search({type: 'track', query: searchTitle}, function(err, data){
 		if (err) {
 			console.log('Error occurred: ' + err);
 			return;
 		}else if (data){
 		//Handle Data
-		console.log(data);
-		// console.log("Artist: ")
-		// console.log("Track: ")
-		// console.log("Spotify Link: ")
-		// console.log("Album Title: ")
+		var albumTrack = data.tracks.items;
+
+		for (i=0; i < albumTrack.length; i++){
+		console.log("Artist: " + albumTrack[i].artists[i].name);
+		console.log("Album Title: " + albumTrack[i].album.name);
+		console.log("Spotify Link: " + albumTrack[i].preview_url);
+		console.log("Track Title: " + albumTrack[i].name);
 		// } else if (!data && !err){
 		// myPlaylist('The Sign');
+		}
+		
 		}
 	});
 	
