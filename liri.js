@@ -3,7 +3,7 @@ var keys = require("./keys.js")
 var twitter = require("twitter");
 var omdb = require("request");
 var spotify = require("spotify");
-var filesystem = require("fs");
+var fs = require("fs");
 
 var liriCommand = process.argv[2];
 
@@ -24,7 +24,7 @@ switch(liriCommand) {
 	break;
 
 	case "spotify-this-song":
-	myPlayList();
+	myPlayList(liriCommandParam);
 	break;
 
 	case "movie-this":
@@ -39,7 +39,7 @@ switch(liriCommand) {
 //Function for pulling in last 20 tweets
 
 function myTweets(){
-	twitterUser.get('search/tweets', {q: 'burgeoningbaker', count: "20"}, function(error, tweet, response) {
+	twitterUser.get('search/tweets', {q: 'burgeoningbaker', count: 20}, function(error, tweet, response) {
 		if(error){
 			console.log(error);
 		}else{
@@ -49,7 +49,22 @@ function myTweets(){
 };
 
 //Function for pulling in artist, song name, link to song and album with song via Spotify
-function myPlayList(){
+function myPlayList(songchoice){
+	spotify.search({type: 'track', query: songchoice}, function(err, data){
+		if (err) {
+			console.log('Error occurred: ' + err);
+			return;
+		}else if (data){
+		//Handle Data
+		console.log(data);
+		// console.log("Artist: ")
+		// console.log("Track: ")
+		// console.log("Spotify Link: ")
+		// console.log("Album Title: ")
+		// } else if (!data && !err){
+		// myPlaylist('The Sign');
+		}
+	});
 	
 };
 
@@ -60,4 +75,12 @@ function myMovie(){};
 
 // Function to fire off if typed do what it says
 
-function randomPick(){};
+function randomPick(){
+	fs.readFile("random.txt", "UTF-8", function(error, data){
+		if (error){
+			console.log(error);
+		}
+			console.log(data);
+
+	});
+};
