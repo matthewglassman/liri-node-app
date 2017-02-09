@@ -6,3 +6,7 @@ exports.twitterKeys = {
 	access_token_key: '331656337-PEvd46nKB7qC1p7M0lhFSsAqOWOx05VsDKbJoy1Y',
 	access_token_secret: 'SbmzLPfne5RKzoPIrz8JZjiueEVj3Yr6HOEY6fvoiIUb0'
 }
+
+exports.tmdbKeys = {
+	api_key: '50e449b2805d136c1b71f49657405d9f'
+}

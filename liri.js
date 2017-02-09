@@ -64,14 +64,15 @@ function myPlayList(){
 		var albumTrack = data.tracks.items;
 
 		for (i=0; i < albumTrack.length; i++){
-		console.log("Artist: " + albumTrack[i].artists[i].name);
+		console.log("Artist: " + albumTrack[i].artists[0].name);
 		console.log("Album Title: " + albumTrack[i].album.name);
 		console.log("Spotify Link: " + albumTrack[i].preview_url);
 		console.log("Track Title: " + albumTrack[i].name);
+		console.log("-------------------")
 		// } else if (!data && !err){
 		// myPlaylist('The Sign');
 		}
-	};
+	});
 	
 };
 
