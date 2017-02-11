@@ -1,7 +1,7 @@
 // Need a constructor for the keys and twitter?
 var keys = require("./keys.js") 
 var twitter = require("twitter");
-var omdb = require("request");
+var tmdb = require("request");
 var spotify = require("spotify");
 var fs = require("fs");
 
@@ -9,6 +9,11 @@ var liriCommand = process.argv[2];
 var searchTitle = process.argv[3];
 
 var twitterKeys = keys.twitterKeys;
+// var movieKey = keys.tmdbKeys;
+
+// var movieAPIKey = new tmdb({
+// 	api_key: movieKey.api_key
+// });
 
 var twitterUser = new twitter({
 	consumer_key: twitterKeys.consumer_key,
@@ -84,11 +89,38 @@ function myMovie(){};
 // Function to fire off if typed do what it says
 
 function randomPick(){
-	fs.readFile("random.txt", "UTF-8", function(error, data){
+	//Read the file, split on comma, take second part as an argument?
+
+	fs.readFile("random.txt", "utf8", function(error, data) {
 		if (error){
 			console.log(error);
-		}
-			console.log(data);
+		} else {
+			//console.log(data);
+			// liriCommand = dataArray.slice(0, -1)
+			// searchTitle = dataArray.slice(1)
+			// console.log(liriCommand);
+			// console.log(searchTitle);
+			var dataArray = data.split(",");
+			if (dataArray[0] === 'spotify'){
+				myPlaylist(dataArray[1]);
+			
 
+		
+			// for (i=0; i<dataArray.length; i++){
+			// 	Command = dataArray.slice(0);
+			// 	searchTitle = dataArray.slice(1);
+			// 	liriCommand = Command + searchTitle;
+
+			// 	console.log(liriCommand);
+			// }
+
+			
+			//console.log(searchTitle);
+
+		 };	
+		};
 	});
 };
+
+
+
