@@ -101,7 +101,8 @@ function randomPick(){
 			// console.log(liriCommand);
 			// console.log(searchTitle);
 			var dataArray = data.split(",");
-			if (dataArray[0] === 'spotify'){
+			console.log(dataArray);
+			if (dataArray[0] === 'spotify-this-song'){
 				myPlaylist(dataArray[1]);
 			
 
