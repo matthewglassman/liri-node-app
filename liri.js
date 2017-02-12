@@ -84,7 +84,23 @@ function myPlayList(){
 //Function for using request to get OMDB movie information from movie object
 // Move Title, Year of release, Rating, Country, Language, Plot, Actors, Rotten Tomato Rating, URL
 
-function myMovie(){};
+function myMovie(){
+	var queryURL = 'https://api.themoviedb.org/3/search/movie?api_key=50e449b2805d136c1b71f49657405d9f&query=' + searchTitle;
+
+	request(queryURL, function(error, response, body){
+		if (!error && response.statusCode === 200){
+			var movieResults = JSON.parse(body).results[0];
+			var movID = movieResults.id;
+			console.log(movID);
+		}
+
+		//if (!error && response.statusCode === 200){
+		// 	var movieResults = JSON.parse(body).results[0];
+		// 	var movID = movieResults.id;
+		// 	console.log(movID);
+	});
+	//request(newqueryURL, function(error, response, body){
+};
 
 // Function to fire off if typed do what it says
 
@@ -119,10 +135,3 @@ function randomPick(){
 
 			
 			//console.log(searchTitle);
-
-		 	
-
-	
-
-
-
