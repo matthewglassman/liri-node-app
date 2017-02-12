@@ -25,19 +25,19 @@ var twitterUser = new twitter({
 
 //Switch cases to call function based on liriCommand entered.
 switch(liriCommand) {
-	case "my-tweets":
+	case 'my-tweets':
 	myTweets();
 	break;
 
-	case "spotify-this-song":
+	case 'spotify-this-song':
 	myPlayList();
 	break;
 
-	case "movie-this":
+	case 'movie-this':
 	myMovie();
 	break;
 
-	case "do-what-it-says":
+	case 'do-what-it-says':
 	randomPick();
 	break;
 }
@@ -100,16 +100,18 @@ function randomPick(){
 			// searchTitle = dataArray.slice(1)
 			// console.log(liriCommand);
 			// console.log(searchTitle);
-			var dataArray = data.split(",");
+			var dataArray = data.split(',');
 			console.log(dataArray);
 			if (dataArray[0] === 'spotify-this-song'){
-				myPlaylist(dataArray[1]);
-			
+				searchTitle = dataArray[1];
+				//console.log(searchTitle);
+				myPlayList(dataArray[1]);
+			}
 
-		
-			// for (i=0; i<dataArray.length; i++){
+		}	
+	})		// for (i=0; i<dataArray.length; i++){
 			// 	Command = dataArray.slice(0);
-			// 	searchTitle = dataArray.slice(1);
+};		// 	searchTitle = dataArray.slice(1);
 			// 	liriCommand = Command + searchTitle;
 
 			// 	console.log(liriCommand);
@@ -118,10 +120,9 @@ function randomPick(){
 			
 			//console.log(searchTitle);
 
-		 };	
-		};
-	});
-};
+		 	
+
+	
 
 
 
