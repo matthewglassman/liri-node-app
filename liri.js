@@ -1,7 +1,7 @@
 // Need a constructor for the keys and twitter?
 var keys = require("./keys.js") 
 var twitter = require("twitter");
-var tmdb = require("request");
+var request = require("request");
 var spotify = require("spotify");
 var fs = require("fs");
 
@@ -92,14 +92,17 @@ function myMovie(){
 			var movieResults = JSON.parse(body).results[0];
 			var movID = movieResults.id;
 			console.log(movID);
+
+			var newQueryURL = 'https://api.themoviedb.org/3/movie/' + movID + '?api_key=50e449b2805d136c1b71f49657405d9f';
+
+			request(newQueryURL, function(error, response, body){
+				console.log(JSON.parse(body));
+			});
 		}
 
-		//if (!error && response.statusCode === 200){
-		// 	var movieResults = JSON.parse(body).results[0];
-		// 	var movID = movieResults.id;
-		// 	console.log(movID);
+		
 	});
-	//request(newqueryURL, function(error, response, body){
+
 };
 
 // Function to fire off if typed do what it says
@@ -125,13 +128,5 @@ function randomPick(){
 			}
 
 		}	
-	})		// for (i=0; i<dataArray.length; i++){
-			// 	Command = dataArray.slice(0);
-};		// 	searchTitle = dataArray.slice(1);
-			// 	liriCommand = Command + searchTitle;
-
-			// 	console.log(liriCommand);
-			// }
-
-			
-			//console.log(searchTitle);
+	})		
+};		
